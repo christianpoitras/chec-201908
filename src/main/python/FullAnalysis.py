@@ -1,10 +1,11 @@
 import logging
 import os
 
-import GenomeCoverage
+import PrepareGenomeCoverage
 import click
 import seqtools.Bam2Bed
 import seqtools.DownloadSample
+import seqtools.GenomeCoverage
 import seqtools.MergeSampleBed
 import seqtools.RunBwa
 import seqtools.SplitBed
@@ -71,6 +72,7 @@ def analyse(sample, fastq, srr, fasta, sizes, splitlength, splitminlength, split
         Bam2Bed.bam_to_bed(sample, threads)
         if splitlength is not None:
             SplitBed.split_bed(sample, splitlength, splitminlength, splitmaxlength)
+        PrepareGenomeCoverage.prepare_genome_coverage(sample, sizes)
         GenomeCoverage.genome_coverage(sample, sizes)
     except Exception as e:
         logging.exception('Could not analyse sample {}'.format(sample))
@@ -83,6 +85,7 @@ def analyse_merged(sample, sizes, splitlength, splitminlength, splitmaxlength):
     try:
         if splitlength is not None:
             SplitBed.split_bed(sample, splitlength, splitminlength, splitmaxlength)
+        PrepareGenomeCoverage.prepare_genome_coverage(sample, sizes)
         GenomeCoverage.genome_coverage(sample, sizes)
     except Exception as e:
         logging.exception('Could not analyse sample {}'.format(sample))
