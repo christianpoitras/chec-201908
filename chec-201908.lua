@@ -30,7 +30,7 @@ always_load("r/3.6.0")
 always_load("vap")
 
 local base = "~/projects/def-robertf/chec-201908"
-prepend_path("PATH", pathJoin(base,"src/main/bash"))
+prepend_path("PATH", pathJoin(base,"bash"))
 prepend_path("PATH", pathJoin(base,"venv/bin"))
 setenv("CHEC_BASE", base)
 setenv("CHEC_PATH", pathJoin(base,"checseqtools"))
