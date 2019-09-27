@@ -3,8 +3,8 @@ import os
 import subprocess
 
 import FullAnalysis
-import SplitBed
 import click
+import seqtools.SplitBed
 
 BASE_SCALE = 1000000
 

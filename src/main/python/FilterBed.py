@@ -1,9 +1,10 @@
 import logging
 import os
 import re
+
 import FullAnalysis
-import SplitBed
 import click
+import seqtools.SplitBed
 
 
 @click.command()

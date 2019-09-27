@@ -1,14 +1,13 @@
 import logging
 import os
 
-import AlignSample
-import BamToBed
-import DownloadSample
-import FilterBam
 import GenomeCoverage
-import MergeSampleBed
-import SplitBed
 import click
+import seqtools.Bam2Bed
+import seqtools.DownloadSample
+import seqtools.MergeSampleBed
+import seqtools.RunBwa
+import seqtools.SplitBed
 
 
 @click.command()
@@ -32,7 +31,7 @@ import click
 def main(samples, merge, fasta, sizes, threads, splitlength, splitminlength, splitmaxlength):
     '''Analyse Martin et al. data from November 2018 in Genetics.'''
     logging.basicConfig(filename='debug.log', level=logging.DEBUG, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-    AlignSample.bwa_index(fasta)
+    RunBwa.bwa_index(fasta)
     samples_columns = all_columns(samples)
     for sample_columns in samples_columns:
         sample = sample_columns[0]
@@ -68,9 +67,8 @@ def analyse(sample, fastq, srr, fasta, sizes, splitlength, splitminlength, split
     try:
         print ('Analyse sample {}'.format(sample))
         DownloadSample.download(sample, fastq, srr)
-        AlignSample.align(sample, fastq, fasta, threads)
-        FilterBam.filter_bam(sample, threads)
-        BamToBed.bam_to_bed(sample, threads)
+        RunBwa.align(sample, fastq, fasta, threads)
+        Bam2Bed.bam_to_bed(sample, threads)
         if splitlength is not None:
             SplitBed.split_bed(sample, splitlength, splitminlength, splitmaxlength)
         GenomeCoverage.genome_coverage(sample, sizes)
