@@ -12,6 +12,7 @@ then
   SLURM_ARRAY_TASK_ID=0
 fi
 
-python $CHEC_PATH/MergeSampleBed.py -i $SLURM_ARRAY_TASK_ID
-python $CHEC_PATH/SplitBed.py -s merge.txt -i $SLURM_ARRAY_TASK_ID
-python $CHEC_PATH/GenomeCoverage.py -s merge.txt -i $SLURM_ARRAY_TASK_ID
+merge -i $SLURM_ARRAY_TASK_ID
+split -s merge.txt -i $SLURM_ARRAY_TASK_ID
+prepgenecov -s merge.txt -i $SLURM_ARRAY_TASK_ID
+genecov -s merge.txt -i $SLURM_ARRAY_TASK_ID

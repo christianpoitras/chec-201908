@@ -12,6 +12,5 @@ then
   SLURM_ARRAY_TASK_ID=0
 fi
 
-python $CHEC_PATH/AlignSample.py -t 4 -i $SLURM_ARRAY_TASK_ID
-python $CHEC_PATH/FilterBam.py -t 4 -i $SLURM_ARRAY_TASK_ID
-python $CHEC_PATH/BamToBed.py -t 4 -i $SLURM_ARRAY_TASK_ID
+runbwa -t 4 -i $SLURM_ARRAY_TASK_ID
+bam2bed -t 4 -i $SLURM_ARRAY_TASK_ID
