@@ -2,8 +2,8 @@ import logging
 import os
 import re
 
-import FullAnalysis
 import click
+import pandas as pd
 import seqtools.SplitBed
 
 
@@ -15,19 +15,21 @@ import seqtools.SplitBed
 def main(samples, annotations):
     '''Filter raw BED files to keep reads for which their center overlap specified annotations.'''
     logging.basicConfig(filename='debug.log', level=logging.DEBUG, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-    samples_names = FullAnalysis.first_column(samples)
-    parsed_annotations = FullAnalysis.all_columns(annotations)
+    parsed_annotations = pd.read_csv(annotations, header=None, sep='\t', comment='#')
     sufix = basename_no_ext(annotations)
     annotations_chrom = {}
-    for annotation in parsed_annotations:
-        chromosome = annotation[0]
-        strand = annotation[5]
+    for index, columns in parsed_annotations.iterrows():
+        chromosome = columns[0]
+        strand = columns[5]
         if not chromosome in annotations_chrom:
             annotations_chrom[chromosome] = {}
         if not strand in annotations_chrom[chromosome]:
             annotations_chrom[chromosome][strand] = []
         annotations_chrom[chromosome][strand].append(annotation)
-    for sample in samples_names:
+    sample_names = pd.read_csv(samples, header=None, sep='\t', comment='#')[0]
+    if index != None:
+        sample_names = [sample_names[index]]
+    for sample in sample_names:
         filter_sample(sample, annotations_chrom, sufix)
 
 

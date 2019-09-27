@@ -3,6 +3,7 @@ import os
 
 import PrepareGenomeCoverage
 import click
+import pandas as pd
 import seqtools.Bam2Bed
 import seqtools.DownloadSample
 import seqtools.GenomeCoverage
@@ -33,34 +34,18 @@ def main(samples, merge, fasta, sizes, threads, splitlength, splitminlength, spl
     '''Analyse Martin et al. data from November 2018 in Genetics.'''
     logging.basicConfig(filename='debug.log', level=logging.DEBUG, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     RunBwa.bwa_index(fasta)
-    samples_columns = all_columns(samples)
-    for sample_columns in samples_columns:
-        sample = sample_columns[0]
-        fastq = sample_columns[1] if len(sample_columns) > 1 else None
-        srr = sample_columns[2] if len(sample_columns) > 2 else None
+    sample_columns = pd.read_csv(samples, header=None, sep='\t', comment='#')
+    for index, columns in sample_columns.iterrows():
+        sample = columns[0]
+        fastq = columns[1] if len(columns) > 1 else None
+        srr = columns[2] if len(columns) > 2 else None
         analyse(sample, fastq, srr, fasta, sizes, splitlength, splitminlength, splitmaxlength, threads)
-    merges_columns = all_columns(merge) if os.path.isfile(merge) else []
-    for merge_columns in merges_columns:
-        sample = merge_columns[0]
-        samples_to_merge = merge_columns[1:] if len(merge_columns) > 1 else None
+    merge_columns = pd.read_csv(merge, header=None, sep='\t', comment='#')
+    for index, columns in merge_columns.iterrows():
+        sample = columns[0]
+        samples_to_merge = columns[1:] if len(columns) > 1 else None
         MergeSampleBed.merge_samples(sample, samples_to_merge)
         analyse_merged(sample, sizes, splitlength, splitminlength, splitmaxlength)
-
-
-def all_columns(file):
-    all = []
-    with open(file, 'r') as lines:
-        for line in lines:
-            if line.startswith('#'):
-                continue
-            columns = line.rstrip('\n\r').split('\t');
-            all.extend([columns])
-    return all
-    
-    
-def first_column(file):
-    all = all_columns(file)
-    return [columns[0] for columns in all]
 
 
 def analyse(sample, fastq, srr, fasta, sizes, splitlength, splitminlength, splitmaxlength, threads=None):
