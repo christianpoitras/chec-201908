@@ -16,7 +16,7 @@ setup(
     python_requires='>=3.7.4',
     install_requires=[
         'click>=7.0',
-        'pandas>=0.25.1',
+        'pandas>=0.25.0',
         'seqtools@http://github.com/francoisrobertlab/seqtools/tarball/0.1'
     ],
     entry_points={
