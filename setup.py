@@ -13,6 +13,7 @@ setup(
     classifiers=[
         'License :: OSI Approved :: GNU General Public License version 3'
     ],
+    python_requires='>=3.7.4',
     install_requires=[
         'click>=7.0',
         'pandas>=0.25.1',
