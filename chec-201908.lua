@@ -8,6 +8,7 @@ This module sets the following environment variables:
     CHEC_VENV: directory containing ChEC-Seq's virtual environment for python
 
 This module loads the following modules and their requirements:
+    - python/3.7.4
     - bwa/0.7.17
     - samtools/1.9
     - bedtools/2.27.1
@@ -22,6 +23,7 @@ whatis("Description: ChEC-SEQ analysis for Celia Jeronimo data")
 
 always_load("nixpkgs/16.09")
 always_load("gcc/7.3.0")
+always_load("python/3.7.4")
 always_load("bwa/0.7.17")
 always_load("samtools/1.9")
 always_load("bedtools/2.27.1")
