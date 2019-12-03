@@ -4,7 +4,7 @@ import subprocess
 
 import click
 import pandas as pd
-import seqtools.SplitBed
+import seqtools.SplitBed as sb
 
 BASE_SCALE = 1000000
 
@@ -30,15 +30,15 @@ def prepare_genome_coverage(sample, sizes):
     '''Prepare BED file used for genome coverage on a single sample.'''
     print ('Compute genome coverage on sample {}'.format(sample))
     do_prepare_genome_coverage(sample, sizes)
-    splits = SplitBed.splits(sample)
+    splits = sb.splits(sample)
     for split in splits:
         do_prepare_genome_coverage(split, sizes)
 
 
 def do_prepare_genome_coverage(sample, sizes):
-    bed_raw = sample + "-raw.bed"
-    bed_ignore_strand = sample + "-cov.bed"
-    ignore_strand(bed_raw, bed_ignore_strand)
+    bed_raw = sample + '.bed'
+    bed_forcoverage = sample + '-forcov.bed'
+    ignore_strand(bed_raw, bed_forcoverage)
 
 
 def ignore_strand(bed, output):
