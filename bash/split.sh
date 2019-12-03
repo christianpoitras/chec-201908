@@ -3,7 +3,7 @@
 #SBATCH --time=24:00:00
 #SBATCH --array=0-0
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=8G
+#SBATCH --mem=30G
 #SBATCH --mail-user=christian.poitras@ircm.qc.ca
 #SBATCH --mail-type=ALL
 
@@ -12,6 +12,4 @@ then
   SLURM_ARRAY_TASK_ID=0
 fi
 
-split -i $SLURM_ARRAY_TASK_ID
-prepgenecov -i $SLURM_ARRAY_TASK_ID
-genecov -i $SLURM_ARRAY_TASK_ID
+split -i $SLURM_ARRAY_TASK_ID $@
