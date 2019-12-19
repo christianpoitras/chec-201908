@@ -23,7 +23,7 @@ NEGATIVE_STRAND = -1
 @click.option('--output', '-o', type=click.Path(), default='genes-out.txt',
               help='Output file.')
 def main(genes, signal, dyad, mind, maxd, output):
-    '''Prepare BED file used for genome coverage on samples.'''
+    '''Finds the most plausible dyad position.'''
     logging.basicConfig(filename='debug.log', level=logging.DEBUG, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     if dyad != 2:
         print >> sys.stderr, 'right now, dyad parameter must be 2'
