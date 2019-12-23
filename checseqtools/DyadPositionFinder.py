@@ -18,7 +18,7 @@ NEGATIVE_STRAND = -1
               help='Dyad index. Must be 2 right now.')
 @click.option('--mind', '-d', type=int, default=141,
               help='Minimum distance from previous dyad.')
-@click.option('--maxd', '-D', type=int, default=181,
+@click.option('--maxd', '-D', type=int, default=191,
               help='Maximum distance from previous dyad.')
 @click.option('--output', '-o', type=click.Path(), default='genes-out.txt',
               help='Output file.')
