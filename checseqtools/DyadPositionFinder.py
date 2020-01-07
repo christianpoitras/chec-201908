@@ -10,17 +10,17 @@ NEGATIVE_STRAND = -1
 
 
 @click.command()
-@click.option('--genes', '-g', type=click.Path(exists=True), default='genes.txt',
+@click.option('--genes', '-g', type=click.Path(exists=True), default='genes.txt', show_default=True,
               help='Genes information.')
-@click.option('--signal', '-s', type=click.Path(exists=True), default='signal.bw',
+@click.option('--signal', '-s', type=click.Path(exists=True), default='signal.bw', show_default=True,
               help='Dyad signal as a bigWig or bigBed file.')
-@click.option('--dyad', '-i', type=int, default=2,
+@click.option('--dyad', '-i', type=int, default=2, show_default=True,
               help='Dyad index. Must be 2 right now.')
-@click.option('--mind', '-d', type=int, default=141,
+@click.option('--mind', '-d', type=int, default=141, show_default=True,
               help='Minimum distance from previous dyad.')
-@click.option('--maxd', '-D', type=int, default=191,
+@click.option('--maxd', '-D', type=int, default=191, show_default=True,
               help='Maximum distance from previous dyad.')
-@click.option('--output', '-o', type=click.Path(), default='genes-out.txt',
+@click.option('--output', '-o', type=click.Path(), default='genes-out.txt', show_default=True,
               help='Output file.')
 def main(genes, signal, dyad, mind, maxd, output):
     '''Finds the most plausible dyad position.'''
