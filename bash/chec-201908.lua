@@ -36,7 +36,7 @@ always_load("plot2do")
 
 local base = "~/projects/def-robertf/chec-201908"
 prepend_path("PATH", pathJoin(base,"bash"))
-prepend_path("PATH", pathJoin(base,"venv/bin"))
+prepend_path("PATH", "~/checseqtools-robertf-venv/bin")
 setenv("CHEC_BASE", base)
 setenv("CHEC_PATH", pathJoin(base,"checseqtools"))
 setenv("CHEC_VENV", pathJoin(base,"venv/bin"))
