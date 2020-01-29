@@ -1,6 +1,6 @@
 help([[
 For detailed instructions, go to:
-    https://github.com/francoisrobertlab/chec-201908
+    https://github.com/francoisrobertlab/checseqtools
 
 This module sets the following environment variables:
     CHEC_BASE: directory containing ChEC-Seq source code
@@ -20,7 +20,7 @@ This module loads the following modules and their requirements:
 
 whatis("Version: 1.0.0")
 whatis("Keywords: ChEC-SEQ, Utility")
-whatis("URL: https://github.com/francoisrobertlab/chec-201908")
+whatis("URL: https://github.com/francoisrobertlab/checseqtools")
 whatis("Description: ChEC-SEQ analysis for Celia Jeronimo data")
 
 always_load("nixpkgs/16.09")
@@ -34,7 +34,7 @@ always_load("kentutils/20180716")
 always_load("vap")
 always_load("plot2do")
 
-local base = "~/projects/def-robertf/chec-201908"
+local base = "~/projects/def-robertf/checseqtools"
 prepend_path("PATH", pathJoin(base,"bash"))
 prepend_path("PATH", "~/checseqtools-robertf-venv/bin")
 setenv("CHEC_BASE", base)

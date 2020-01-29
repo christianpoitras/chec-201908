@@ -8,7 +8,7 @@ setup(
     author_email='christian.poitras@ircm.qc.ca',
     description='Tools to analyze ChEC-seq data',
     keywords='bioinformatics, ChEC-seq',
-    url='https://github.com/francoisrobertlab/chec-201908',
+    url='https://github.com/francoisrobertlab/checseqtools',
     license='GNU General Public License version 3',
     classifiers=[
         'License :: OSI Approved :: GNU General Public License version 3'

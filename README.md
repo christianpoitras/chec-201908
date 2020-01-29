@@ -1,2 +1,2 @@
-# chec-201908
+# checseqtools
 ChEC-SEQ analysis by Celia Jeronimo
