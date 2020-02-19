@@ -1,2 +1,2 @@
 # checseqtools
-ChEC-SEQ analysis by Celia Jeronimo
+Tools to analyse ChEC-seq data
