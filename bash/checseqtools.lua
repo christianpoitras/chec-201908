@@ -17,7 +17,7 @@ This module loads the following modules and their requirements:
 whatis("Version: 1.0.0")
 whatis("Keywords: ChEC-SEQ, Utility")
 whatis("URL: https://github.com/francoisrobertlab/checseqtools")
-whatis("Description: ChEC-SEQ analysis for Celia Jeronimo data")
+whatis("Description: Tools for analysis of ChEC-seq data")
 
 always_load("nixpkgs/16.09")
 always_load("gcc/7.3.0")
