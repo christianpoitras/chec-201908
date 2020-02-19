@@ -2,11 +2,6 @@ help([[
 For detailed instructions, go to:
     https://github.com/francoisrobertlab/checseqtools
 
-This module sets the following environment variables:
-    CHEC_BASE: directory containing ChEC-Seq source code
-    CHEC_PATH: directory containing ChEC-Seq analysis tools in python
-    CHEC_VENV: directory containing ChEC-Seq's virtual environment for python
-
 This module loads the following modules and their requirements:
     - python/3.7.4
     - fastqc/0.11.8
@@ -36,9 +31,6 @@ always_load("kentutils/20180716")
 always_load("vap")
 always_load("plot2do")
 
-local base = "~/projects/def-robertf/checseqtools"
-prepend_path("PATH", pathJoin(base,"bash"))
-prepend_path("PATH", "~/checseqtools-robertf-venv/bin")
-setenv("CHEC_BASE", base)
-setenv("CHEC_PATH", pathJoin(base,"checseqtools"))
-setenv("CHEC_VENV", pathJoin(base,"venv/bin"))
+local venv = "~/checseqtools-robertf-venv"
+prepend_path("PATH", pathJoin(venv,"bash"))
+prepend_path("PATH", pathJoin(venv,"bin"))
