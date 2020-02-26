@@ -39,7 +39,7 @@ def do_prepare_genome_coverage(sample):
 
 def ignore_strand(bed, output):
     '''Resize annotations to 1 positioned at the center.'''
-    with open(bed, "r") as infile, open(output, "w") as outfile:
+    with open(bed, 'r') as infile, open(output, 'w') as outfile:
         for line in infile:
             if line.startswith('track') or line.startswith('browser') or line.startswith('#'):
                 outfile.write(line)
