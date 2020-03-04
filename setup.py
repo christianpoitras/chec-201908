@@ -22,7 +22,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'prepgenecov = checseqtools.PrepareGenomeCoverage:main'
+            'chectools = checseqtools.chectools:chectools'
         ]
     }
 )

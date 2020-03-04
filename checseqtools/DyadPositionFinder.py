@@ -22,7 +22,7 @@ NEGATIVE_STRAND = -1
               help='Maximum distance from previous dyad.')
 @click.option('--output', '-o', type=click.Path(), default='genes-out.txt', show_default=True,
               help='Output file.')
-def main(genes, signal, dyad, mind, maxd, output):
+def dyadposition(genes, signal, dyad, mind, maxd, output):
     '''Finds the most plausible dyad position.'''
     logging.basicConfig(filename='debug.log', level=logging.DEBUG, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     if dyad != 2:
@@ -57,4 +57,4 @@ def highest_signal(bw, chromosome, start, end):
 
 
 if __name__ == '__main__':
-    main()
+    dyadposition()
