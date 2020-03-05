@@ -1,2 +1,2 @@
 # checseqtools
-Tools to analyse ChEC-seq data
+This project was merge into [seqtools](https://github.com/francoisrobertlab/seqtools).
